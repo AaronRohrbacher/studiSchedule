@@ -8,6 +8,9 @@
 <%= f.label :end_time %>
 <%= f.text_field :end_time %>
 
+<% options = options_from_collection_for_select(@rooms, 'id', 'name') %>
+<%= f.select :room_id, options %>
+
 
 <%= f.submit "submit" %>
 <% end %>
