@@ -1,9 +1,9 @@
 class RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  skip_before_action :require_no_authentication, only: [:create]
+  skip_before_action :require_no_authentication, only: [:new, :create]
   skip_before_action :verify_authenticity_token, only: [:create]
-  
+
   before_action :authorize_admin, only: :create
 
   def authorize_admin
@@ -21,7 +21,7 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     super do |r|
       @school = School.find(r.school_id)
-      @account = Account.create!(user_id: r.id, school_id: r.school_id)
+      @account = Account.create!(user_id: r.id, school_id: r.school_id, registration_complete: false)
     end
   end
 

@@ -7,25 +7,20 @@ class CreateAccounts < ActiveRecord::Migration[5.1]
       t.string :last_name
       t.string :parent_name
       t.string :parent2_name
-      t.string :address_one
-      t.string :address2_one
-      t.string :city_one
-      t.string :state_one
-      t.string :zip_one
-      t.string :address_two
-      t.string :address2_two
-      t.string :city_two
-      t.string :state_two
-      t.string :zip_two
-      t.string :phone_one
-      t.string :phone_two
-      t.string :email_one
-      t.string :email_two
+      t.string :address
+      t.string :address2
+      t.string :city
+      t.string :state
+      t.string :zip
+      t.string :phone
+      t.string :phone2
+      t.string :email2
       t.string :student_email
+      t.string :student_phone
       t.boolean :admin, default: false
-      t.boolean :teacher, default: false
+      t.boolean :is_teacher, default: false
+      t.boolean :registration_complete
       t.boolean :active, default: true
-
     end
   end
 end
