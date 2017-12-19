@@ -11,3 +11,9 @@
 <% end %>
 
 <%= link_to 'Add schedule', new_school_event_schedule_path(@school, @event) %>
+
+<% @event.accounts.each do |account| %>
+  <p><%= account.first_name %></p>
+<% end %>
+
+<%= link_to 'Enroll Students', new_school_event_account_event_path(@school, @event) %>

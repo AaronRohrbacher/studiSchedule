@@ -13,6 +13,7 @@ scope "schools/:school_id" do
     resources :events do
       resources :teacher_events
       resources :schedules
+      resources :account_events
     end
   end
 end
