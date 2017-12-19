@@ -6,7 +6,12 @@ class EventsController < ApplicationController
 
   def create
     @school = School.find(params[:school_id])
-    @school.events.create!(event_params)
+    @event = @school.events.create!(event_params)
+    redirect_to school_event_path(@school, @event)
+  end
+
+  def show
+    @event = Event.find(params[:id])
   end
 
   private

@@ -1,0 +1,6 @@
+<h1><%= @event.name %></h1>
+
+<% @event.teachers.each do |teacher| %>
+<p><%= teacher.first_name %> <%= teacher.last_name %></p>
+<% end %>
+<%= link_to 'Add Teacher', new_school_event_teacher_path %>
