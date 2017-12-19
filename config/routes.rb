@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+
+
+scope "schools/:school_id" do
+  root :to => 'home#index'
+
   devise_for :users, controllers: { registrations: "registrations" }
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :accounts, only: 'create'
+  end
+
+  resources :schools do
+    resources :accounts
+  end
 end

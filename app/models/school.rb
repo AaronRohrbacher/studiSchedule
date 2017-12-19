@@ -8,4 +8,5 @@ class School < ApplicationRecord
   has_many :events
   has_many :times
   has_many :rooms
+  has_many :users
 end

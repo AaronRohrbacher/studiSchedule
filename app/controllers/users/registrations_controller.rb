@@ -1,16 +1,29 @@
 class RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  skip_before_action :require_no_authentication, only: [:create]
+  skip_before_action :verify_authenticity_token, only: [:create]
+  
+  before_action :authorize_admin, only: :create
 
+  def authorize_admin
+    if current_user && current_user.account.admin === true
+      return
+    end
+    redirect_to root_path, alert: 'Admins only!'
+  end
   # GET /resource/sign_up
   # def new
   #   super
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super do |r|
+      @school = School.find(r.school_id)
+      @account = Account.create!(user_id: r.id, school_id: r.school_id)
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -36,12 +49,12 @@ class RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:school_id])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
@@ -50,7 +63,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    new_account_path
+    edit_school_account_path(@school, @account)
   end
 
   # The path used after sign up for inactive accounts.

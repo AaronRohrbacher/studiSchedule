@@ -24,7 +24,7 @@ class CreateAccounts < ActiveRecord::Migration[5.1]
       t.string :student_email
       t.boolean :admin, default: false
       t.boolean :teacher, default: false
-      t.boolean :active, default: false
+      t.boolean :active, default: true
 
     end
   end
