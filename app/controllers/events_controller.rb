@@ -11,6 +11,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @school = School.find(params[:school_id])
     @event = Event.find(params[:id])
   end
 
