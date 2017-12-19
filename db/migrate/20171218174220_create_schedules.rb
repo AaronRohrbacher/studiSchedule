@@ -4,9 +4,9 @@ class CreateSchedules < ActiveRecord::Migration[5.1]
       t.integer :school_id
       t.integer :event_id
       t.integer :room_id
-      t.integer :day
-      t.integer :start_time
-      t.integer :end_time
+      t.string :day
+      t.string :start_time
+      t.string :end_time
     end
   end
 end

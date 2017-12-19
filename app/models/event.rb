@@ -5,5 +5,5 @@ class Event < ApplicationRecord
   has_many :schedules
   has_many :accounts, :through => :account_events
   has_many :teachers, :through => :teacher_events
-  has_many :rooms, :through => :times
+  has_many :rooms, :through => :schedules
 end

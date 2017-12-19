@@ -4,3 +4,10 @@
 <p><%= teacher.first_name %> <%= teacher.last_name %></p>
 <% end %>
 <%= link_to 'Add Teacher', new_school_event_teacher_event_path(@school, @event) %>
+
+<% @event.schedules.each do |schedule| %>
+  <p><%= schedule.day %></p>
+  <p><%= schedule.start_time %></p>
+<% end %>
+
+<%= link_to 'Add schedule', new_school_event_schedule_path(@school, @event) %>
