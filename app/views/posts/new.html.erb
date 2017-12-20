@@ -1,0 +1,7 @@
+<%= form_for [@school, @event, @board, @post] do |f| %>
+
+<%= f.label :post %>
+<%= f.text_field :post %>
+
+<%= f.submit "submit" %>
+<% end %>
