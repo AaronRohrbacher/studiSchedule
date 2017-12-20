@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :school
+  has_one :board
   has_many :teacher_events
   has_many :account_events
   has_many :schedules
