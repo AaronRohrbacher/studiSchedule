@@ -10,6 +10,6 @@ class PostsController < ApplicationController
   def create
     @account = current_user.account
     @board = Board.find(params[:board_id])
-    Post.create!(board_id: @board.id, account_id: @account.id, post: params[:post][:post])
+    Post.create(board_id: @board.id, account_id: @account.id, post: params[:post][:post], attachment:params[:post][:attachment])
   end
 end

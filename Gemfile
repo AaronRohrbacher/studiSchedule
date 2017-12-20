@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 2.5'
 # MY PREFERRED AUTHENTICATION:
 gem 'devise', '~> 4.3'
 
+gem 'paperclip', '~> 5.0.0'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

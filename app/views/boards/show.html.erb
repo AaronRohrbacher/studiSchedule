@@ -1,5 +1,8 @@
 <h1><%= @board.event.name %></h1>
 
-<%= @board.posts.each do |post| %>
-<p> <%= post %> </p>
+
+<% @board.posts.each do |post| %>
+<p> <%= post.post %> </p>
+<p> <%= link_to post.attachment.url, post.attachment.url %> </p>
+<%= image_tag post.attachment.url %>
 <% end %>
