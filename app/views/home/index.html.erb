@@ -1,7 +1,1 @@
-<% if current_user %>
-<h3> <%= current_user.email %> </h3>
-<%= link_to 'logout', destroy_user_session_path, method: :delete %>
-<% else %>
-<%= link_to 'login', new_user_session_path %>
-<% end %>
-<h1>hey</h1>
+<h1><%= @school.name %></h1>

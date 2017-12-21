@@ -4,7 +4,7 @@ class RegistrationsController < Devise::RegistrationsController
   skip_before_action :require_no_authentication, only: [:new, :create]
   skip_before_action :verify_authenticity_token, only: [:create]
 
-  before_action :check_admin
+  before_action :authenticate_user!, :check_admin
 
   # GET /resource/sign_up
   # def new
