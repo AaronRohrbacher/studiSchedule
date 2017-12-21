@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_admin
+  # before_action :check_admin
   def edit
     @school = School.find(params[:school_id])
     @account = Account.find(params[:id])

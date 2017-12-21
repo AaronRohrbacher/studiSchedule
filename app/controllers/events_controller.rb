@@ -1,6 +1,15 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_admin, :except => [:show]
+  before_action :check_admin, :except => [:show, :index]
+
+  def index
+    if current_user.account.is_teacher === true
+      @events = current_user.account.teacher.events.all
+    else
+      @events = current_user.account.events.all
+    end
+  end
+
   def new
     @school = School.find(params[:school_id])
     @event = Event.new
