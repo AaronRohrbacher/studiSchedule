@@ -1,5 +1,5 @@
 class SchedulesController < ApplicationController
-  before_action :authenticate_user, :check_admin
+  before_action :authenticate_user!, :check_admin
   def new
     @school = School.find(params[:school_id])
     @rooms = Room.all

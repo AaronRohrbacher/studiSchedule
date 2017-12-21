@@ -14,6 +14,8 @@ class AccountsController < ApplicationController
       @teacher = Teacher.create!(first_name: @account.first_name, last_name: @account.last_name, school_id: @account.school_id)
       TeacherAccount.create!(account_id: @account.id, teacher_id: @teacher.id)
     end
+
+    redirect_to root_path
   end
 
 private

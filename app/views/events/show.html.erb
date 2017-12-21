@@ -1,19 +1,28 @@
 <h1><%= @event.name %></h1>
 
+<% if current_user.account.admin %>
+<p>
+  <%= link_to 'Add Teacher', new_school_event_teacher_event_path(@school, @event) %> |
+  <%= link_to 'Add schedule', new_school_event_schedule_path(@school, @event) %> |
+
+  <%= link_to 'Enroll Students', new_school_event_account_event_path(@school, @event) %>
+</p>
+<% end %>
+
+<%= link_to 'StudiBoard', school_event_board_path(@school, @event) %>
+
+<h3>Teacher(s)</h3>
 <% @event.teachers.each do |teacher| %>
 <p><%= teacher.first_name %> <%= teacher.last_name %></p>
 <% end %>
-<%= link_to 'Add Teacher', new_school_event_teacher_event_path(@school, @event) %>
 
+<h3>Scheduled Times</h3>
 <% @event.schedules.each do |schedule| %>
   <p><%= schedule.day %></p>
   <p><%= schedule.start_time %></p>
 <% end %>
 
-<%= link_to 'Add schedule', new_school_event_schedule_path(@school, @event) %>
-
+<h3>Enrolled Students</h3>
 <% @event.accounts.each do |account| %>
   <p><%= account.first_name %></p>
 <% end %>
-
-<%= link_to 'Enroll Students', new_school_event_account_event_path(@school, @event) %>

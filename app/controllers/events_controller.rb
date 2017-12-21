@@ -3,7 +3,9 @@ class EventsController < ApplicationController
   before_action :check_admin, :except => [:show, :index]
 
   def index
-    if current_user.account.is_teacher === true
+    if current_user.account.admin === true
+      @events = Event.all
+    elsif current_user.account.is_teacher === true
       @events = current_user.account.teacher.events.all
     else
       @events = current_user.account.events.all

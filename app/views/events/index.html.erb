@@ -1,3 +1,3 @@
 <% @events.each do |event| %>
-<p><%= event.name %></p>
+<p><%= link_to event.name, school_event_path(event.school, event) %></p>
 <% end %>

@@ -1,8 +1,7 @@
 <h1><%= @board.event.name %></h1>
 
-
+<%= link_to 'New Post', new_school_event_board_post_path(@board.event.school, @board.event, @board) %>
 <% @board.posts.each do |post| %>
 <p> <%= post.post %> </p>
 <p> <%= link_to post.attachment.url, post.attachment.url %> </p>
-<%= image_tag post.attachment.url %>
 <% end %>
