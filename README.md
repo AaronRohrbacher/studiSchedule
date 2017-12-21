@@ -26,10 +26,15 @@ _A full-featured roster and scheduling program designed specifically for nonprof
 
 * Play around! Create students and teachers, create classes, add students to the class, schedule the classes, and check out the "studiBoard" for each class, where students and teachers can upload files to posts!
 
+## Known Issues
+* Front end is still pretty wire-framed. This app is still in development!
+* Some models are not yet being used. Look forward to future versions, coming soon, which will feature attendance, teacher time tracking, account payment and balances, and an advanced scheduling feature!
+* When an admin creates an account, the account is logged in after creation, as opposed to the admin. This is part of Devise, and I've yet to find the customization for this.
+
+
 ## Technologies used
 
 * Built in Ruby 2.4.1 on Rails 5.1.4
 * Uses Postgres as SQL server
 * Authentication with the Devise gem, customized.
-* Test e-mails sent with the Letter Opener gem.
-* Image upload capability uses the Paperclip gem.
+* File upload capability uses the Paperclip gem.
