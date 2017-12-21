@@ -1,4 +1,5 @@
 class TeacherEventsController < ApplicationController
+  before_action :authenticate_user!, :check_admin
   def new
     @school = School.find(params[:school_id])
     @event = Event.find(params[:event_id])

@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
   def new
     @school = School.find(params[:school_id])
     @event = Event.find(params[:event_id])

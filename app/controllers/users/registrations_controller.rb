@@ -4,14 +4,8 @@ class RegistrationsController < Devise::RegistrationsController
   skip_before_action :require_no_authentication, only: [:new, :create]
   skip_before_action :verify_authenticity_token, only: [:create]
 
-  before_action :authorize_admin, only: :create
+  before_action :check_admin
 
-  def authorize_admin
-    if current_user && current_user.account.admin === true
-      return
-    end
-    redirect_to root_path, alert: 'Admins only!'
-  end
   # GET /resource/sign_up
   # def new
   #   super

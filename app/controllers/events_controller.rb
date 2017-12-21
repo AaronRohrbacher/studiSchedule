@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :check_admin, :except => [:show]
   def new
     @school = School.find(params[:school_id])
     @event = Event.new

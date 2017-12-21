@@ -1,6 +1,6 @@
 class AccountEventsController < ApplicationController
-  before_action :authenticate_user!, :except => [:show, :index]
-  before_action :check_admin
+  # Enroll students in an event
+  before_action :authenticate_user!, :check_admin
   def new
     @accounts = Account.all
     @school = School.find(params[:school_id])
