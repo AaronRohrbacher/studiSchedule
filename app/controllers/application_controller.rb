@@ -2,6 +2,21 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :check_admin, :check_teacher, :check_session
 
+  def after_sign_in_path_for(resource)
+    binding.pry
+    @school = School.find(resource.school.id)
+    school_path(@school)
+  end
+
+  def check_user_school
+    if current_user.school.id === params[:id].to_i
+      return
+    else
+      sign_out_and_redirect(current_user)
+      flash[:alert] = 'User not enrolled at this school.'
+    end
+  end
+
   def check_admin
     if current_user && current_user.account.admin === true
       return
