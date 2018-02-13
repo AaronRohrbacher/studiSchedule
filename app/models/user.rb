@@ -6,4 +6,9 @@ class User < ApplicationRecord
   belongs_to :school
   accepts_nested_attributes_for :school
   has_one :account
+
+  delegate :account, to: :admin, prefix: true, allow_nil: true
+  delegate :account, to: :is_teacher, prefix: true, allow_nil: true
+
+
 end

@@ -84,8 +84,8 @@ ActiveRecord::Schema.define(version: 20171220194033) do
     t.integer "room_id"
     t.string "day"
     t.decimal "duration"
-    t.string "start_time"
-    t.string "end_time"
+    t.time "start_time"
+    t.time "end_time"
   end
 
   create_table "schools", force: :cascade do |t|

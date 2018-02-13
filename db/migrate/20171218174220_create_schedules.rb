@@ -6,8 +6,8 @@ class CreateSchedules < ActiveRecord::Migration[5.1]
       t.integer :room_id
       t.string :day
       t.decimal :duration
-      t.string :start_time
-      t.string :end_time
+      t.time :start_time
+      t.time :end_time
     end
   end
 end
