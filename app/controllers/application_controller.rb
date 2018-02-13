@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :check_admin, :check_teacher, :check_session
+  helper_method :check_admin, :check_teacher, :check_session, :check_user_school
 
   def after_sign_in_path_for(resource)
     @school = School.find(resource.school.id)
@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_user_school
-    if current_user.school.id === params[:id].to_i
+    if current_user.school.id === params[:school_id].to_i
       return
     else
       sign_out_and_redirect(current_user)

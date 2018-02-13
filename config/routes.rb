@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
 scope "schools/:school_id" do
-  root :to => 'home#index'
+  root :to => 'schools#show'
 
   devise_for :users, controllers: { registrations: "registrations" }
   resources :accounts, only: 'create'
