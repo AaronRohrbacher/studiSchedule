@@ -4,9 +4,9 @@ class EventsController < ApplicationController
   before_action :fetch_school, only: [:new, :create, :show]
 
   def index
-    if current_user.account_admin?
+    if current_user.account_admin
       @events = Event.all
-    elsif current_user.account_is_teacher?
+    elsif current_user.account_is_teacher
       @events = current_user.account.teacher.events.all
     else
       @events = current_user.account.events.all

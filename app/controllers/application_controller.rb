@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_admin
-    if current_user && current_user.account_admin?
+    if current_user && current_user.account_admin
       return
     else
       flash[:alert] = 'Admin only access'
@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_teacher
-    if current_user && current_user.account_is_teacher?
+    if current_user && current_user.account_is_teacher
       return
     else
       flash[:alert] = 'Teacher access only'

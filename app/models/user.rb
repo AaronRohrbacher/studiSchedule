@@ -7,8 +7,6 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :school
   has_one :account
 
-  delegate :account, to: :admin, prefix: true, allow_nil: true
-  delegate :account, to: :is_teacher, prefix: true, allow_nil: true
-
-
+  delegate :admin, to: :account, prefix: true, allow_nil: true
+  delegate :is_teacher, to: :account, prefix: true, allow_nil: true
 end
