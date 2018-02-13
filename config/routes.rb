@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
 
 
-  devise_for :users, controllers: { registrations: "registrations"}
+scope "schools/:school_id" do
+  root :to => 'home#index'
 
-# scope "schools/:school_id" do
-#   resources :accounts, only: 'create'
-#   end
+  devise_for :users, controllers: { registrations: "registrations" }
+  resources :accounts, only: 'create'
+  end
 
   resources :schools do
     resources :accounts
