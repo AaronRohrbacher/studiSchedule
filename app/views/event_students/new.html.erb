@@ -1,0 +1,7 @@
+<%= form_for [@school, @event, @event_students] do |f| %>
+
+<% options = options_from_collection_for_select(@students, 'id', 'first_name') %>
+<%= f.select :student_id, options %>
+
+<%= f.submit "submit" %>
+<% end %>

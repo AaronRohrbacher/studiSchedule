@@ -11,9 +11,9 @@ scope "schools/:school_id" do
   resources :schools do
     resources :accounts
     resources :events do
-      resources :teacher_events
+      resources :event_teachers
+      resources :event_students
       resources :schedules
-      resources :account_events
       resources :boards do
         resources :posts
       end

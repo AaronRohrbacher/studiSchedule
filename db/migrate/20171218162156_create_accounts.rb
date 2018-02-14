@@ -3,6 +3,7 @@ class CreateAccounts < ActiveRecord::Migration[5.1]
     create_table :accounts do |t|
       t.integer :school_id
       t.integer :user_id
+      t.integer :event_id
       t.string :first_name
       t.string :last_name
       t.string :parent_name
@@ -17,8 +18,8 @@ class CreateAccounts < ActiveRecord::Migration[5.1]
       t.string :email2
       t.string :student_email
       t.string :student_phone
+      t.string :type
       t.boolean :admin, default: false
-      t.boolean :is_teacher, default: false
       t.boolean :registration_complete
       t.boolean :active, default: true
     end
