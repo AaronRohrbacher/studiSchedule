@@ -10,20 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171220194033) do
+ActiveRecord::Schema.define(version: 20180214021401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "account_events", force: :cascade do |t|
-    t.integer "school_id"
-    t.integer "account_id"
-    t.integer "event_id"
-  end
-
   create_table "accounts", force: :cascade do |t|
     t.integer "school_id"
     t.integer "user_id"
+    t.integer "event_id"
     t.string "first_name"
     t.string "last_name"
     t.string "parent_name"
@@ -38,8 +33,8 @@ ActiveRecord::Schema.define(version: 20171220194033) do
     t.string "email2"
     t.string "student_email"
     t.string "student_phone"
+    t.string "type"
     t.boolean "admin", default: false
-    t.boolean "is_teacher", default: false
     t.boolean "registration_complete"
     t.boolean "active", default: true
   end
@@ -53,6 +48,18 @@ ActiveRecord::Schema.define(version: 20171220194033) do
 
   create_table "boards", force: :cascade do |t|
     t.integer "event_id"
+  end
+
+  create_table "event_students", force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "student_id"
+    t.integer "school_id"
+  end
+
+  create_table "event_teachers", force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "teacher_id"
+    t.integer "school_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -90,17 +97,6 @@ ActiveRecord::Schema.define(version: 20171220194033) do
 
   create_table "schools", force: :cascade do |t|
     t.string "name"
-  end
-
-  create_table "teacher_accounts", force: :cascade do |t|
-    t.integer "account_id"
-    t.integer "teacher_id"
-  end
-
-  create_table "teacher_events", force: :cascade do |t|
-    t.integer "school_id"
-    t.integer "teacher_id"
-    t.integer "event_id"
   end
 
   create_table "teachers", force: :cascade do |t|

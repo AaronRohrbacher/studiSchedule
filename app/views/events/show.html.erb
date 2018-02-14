@@ -2,10 +2,10 @@
 
 <% if current_user.account.admin %>
 <p>
-  <%= link_to 'Add Teacher', new_school_event_teacher_event_path(@school, @event) %> |
   <%= link_to 'Add schedule', new_school_event_schedule_path(@school, @event) %> |
+  <%= link_to 'Add teachers', new_school_event_event_teacher_path(@school, @event) %> |
+  <%= link_to 'Add students', new_school_event_event_student_path(@school, @event) %> |
 
-  <%= link_to 'Enroll Students', new_school_event_account_event_path(@school, @event) %>
 </p>
 <% end %>
 
@@ -23,6 +23,6 @@
 <% end %>
 
 <h3>Enrolled Students</h3>
-<% @event.accounts.each do |account| %>
-  <p><%= account.first_name %></p>
+<% @event.students.each do |student| %>
+  <p><%= student.first_name %></p>
 <% end %>

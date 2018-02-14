@@ -43,7 +43,7 @@
 
 <% if @account.registration_complete === false %>
 <%= f.label :is_teacher %>
-<%= f.select :is_teacher, [['Student', false],['Teacher', true]] %>
+<%= f.select :type, [['Student', Student],['Teacher', Teacher]] %>
 <% end %>
 
 <%= f.submit "submit" %>

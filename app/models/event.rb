@@ -1,12 +1,12 @@
 class Event < ApplicationRecord
   belongs_to :school
   has_one :board
-  has_many :teacher_events
-  has_many :account_events
   has_many :schedules, dependent: :destroy
-  has_many :accounts, :through => :account_events
-  has_many :teachers, :through => :teacher_events
+  has_many :event_students
+  has_many :students, :through => :event_students
+  has_many :event_teachers
+  has_many :teachers, :through => :event_teachers
   has_many :rooms, :through => :schedules
 
-  delegate :name, to: :school, prefix: true, allow_nil: true
+  # delegate :name, to: :school, prefix: true, allow_nil: true
 end

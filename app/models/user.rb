@@ -8,5 +8,5 @@ class User < ApplicationRecord
   has_one :account
 
   delegate :admin, to: :account, prefix: true, allow_nil: true
-  delegate :is_teacher, to: :account, prefix: true, allow_nil: true
+  delegate :type, to: :account, prefix: true, allow_nil: true
 end
