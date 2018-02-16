@@ -9,16 +9,6 @@ MONDAY:
     </tr>
   </thead>
   <tbody>
-    <%= Schedule.display_schedule.html_safe %>
-  <tr>
-  <td>&nbsp;</td>
-  <td class="table-info">Info</td>
-  <td>&nbsp;</td>
-  </tr>
-  <tr>
-  <td class="table-danger">Danger</td>
-  <td>&nbsp;</td>
-  <td class="table-warning">Warning</td>
-  </tr>
+    <%= Schedule.display_schedule('monday').html_safe %>
   </tbody>
 </table>
