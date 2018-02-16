@@ -10,8 +10,6 @@ class SchedulesController < ApplicationController
   def create
     @school = School.find(params[:school_id])
     @event = Event.find(params[:event_id])
-    binding.pry
-
     start_time = Time.utc(2000,01,01,params[:schedule]['start_time(4i)'].to_i, params[:schedule]['start_time(5i)'].to_i)
     end_time = Time.utc(2000,01,01,params[:schedule]['end_time(4i)'].to_i, params[:schedule]['end_time(5i)'].to_i)
 
@@ -24,5 +22,12 @@ class SchedulesController < ApplicationController
     else
       Schedule.create!(school_id: @school.id, event_id: @event.id, room_id: params[:schedule][:room_id], day: params[:schedule][:day], start_time: start_time, end_time: end_time)
     end
+  end
+
+  def index
+    # @school = School.find(params[:school_id])
+    @rooms = Room.all
+    @events = Event.all
+    @schedules = Schedule.all
   end
 end

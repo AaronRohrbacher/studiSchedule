@@ -8,7 +8,9 @@ scope "schools/:school_id" do
   resources :accounts, only: 'create'
   end
 
+
   resources :schools do
+    resources :schedules
     resources :accounts
     resources :events do
       resources :event_teachers
