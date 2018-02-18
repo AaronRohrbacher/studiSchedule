@@ -11,7 +11,7 @@ class Schedule < ApplicationRecord
     until time == school_closed do
       html << "<td>#{time}</td>"
       Room.all.each do |room|
-        schedule = room.schedules.where(start_time: time, day: day)[0]&.event
+        schedule = room.schedules.where(start_time: time)[0]&.event
         if schedule
           html << "<td class = 'table-info'>#{schedule.name}</td>"
         else

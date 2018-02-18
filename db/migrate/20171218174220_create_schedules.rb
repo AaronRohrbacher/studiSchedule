@@ -5,9 +5,10 @@ class CreateSchedules < ActiveRecord::Migration[5.1]
       t.integer :event_id
       t.integer :room_id
       t.string :day
-      t.decimal :duration
+      t.string :recurring
       t.time :start_time
       t.time :end_time
+      t.date :date
     end
   end
 end
