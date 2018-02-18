@@ -8,6 +8,12 @@
 <%= f.label :end_time %>
 <%= f.time_select :end_time %>
 
+<%= f.label :date %>
+<%= f.date_field :date %>
+
+<%= f.label :recurring %>
+<%= f.text_field :recurring %>
+
 <% options = options_from_collection_for_select(@rooms, 'id', 'name') %>
 <%= f.select :room_id, options %>
 

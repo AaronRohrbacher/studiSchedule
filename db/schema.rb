@@ -90,9 +90,10 @@ ActiveRecord::Schema.define(version: 20180214021401) do
     t.integer "event_id"
     t.integer "room_id"
     t.string "day"
-    t.decimal "duration"
+    t.string "recurring"
     t.time "start_time"
     t.time "end_time"
+    t.date "date"
   end
 
   create_table "schools", force: :cascade do |t|
