@@ -16,7 +16,7 @@ class SchedulesController < ApplicationController
     end_time = Time.utc(2000,01,01,params[:schedule]['end_time(4i)'].to_i,
                  params[:schedule]['end_time(5i)'].to_i)
 
-    if Room.has_scheduling_conflict?(params[:schedule][:room_id], start_time, end_time)
+    if Room.has_scheduling_conflict?(params[:schedule][:room_id], params[:schedule][:date], start_time, end_time)
       flash[:alert] = "Schedule Conflict"
     else
       recurring_date = Date.parse(params[:schedule][:date])
@@ -27,7 +27,7 @@ class SchedulesController < ApplicationController
       elsif params[:schedule][:recurring] = 'indefinite'
         end_recurring_date = recurring_date + 1.year
       end
-      
+
         until recurring_date > end_recurring_date do
           Schedule.create!(
             school_id: @school.id,

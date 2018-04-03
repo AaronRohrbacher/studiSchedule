@@ -1,14 +1,1 @@
-MONDAY:
-<table class="table">
-  <thead>
-    <tr>
-      <th>Time</th>
-      <% @rooms.each do |room| %>
-      <th><%= room.name %></th>
-      <% end %>
-    </tr>
-  </thead>
-  <tbody>
-    <%= Schedule.display_schedule('monday').html_safe %>
-  </tbody>
-</table>
+<%= Schedule.display_schedule(Time.utc(2018, 4, 10)).html_safe %>
