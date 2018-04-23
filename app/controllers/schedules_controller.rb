@@ -43,7 +43,7 @@ class SchedulesController < ApplicationController
   end
 
   def index
-    # @school = School.find(params[:school_id])
+    @school = School.find(params[:school_id])
     @rooms = Room.all
     @events = Event.all
     @schedules = Schedule.all
