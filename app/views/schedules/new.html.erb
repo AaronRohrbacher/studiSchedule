@@ -1,12 +1,10 @@
 <%= form_for [@school, @event, @schedule] do |f| %>
-<%= f.label :day %>
-<%= f.text_field :day %>
 
 <%= f.label :start_time %>
-<%= f.time_select :start_time %>
+<%= f.time_select :start_time, {minute_step: 15} %>
 
 <%= f.label :end_time %>
-<%= f.time_select :end_time %>
+<%= f.time_select :end_time, {minute_step: 15}%>
 
 <%= f.label :date %>
 <%= f.date_field :date %>
