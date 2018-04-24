@@ -7,7 +7,7 @@ class Room < ApplicationRecord
     room = Room.find(room_id)
     conflict = nil
     room.schedules.each do |schedule|
-      if (start_time.between?(schedule.start_time, schedule.end_time - 1.second) && date == schedule.date) || end_time.between?(schedule.start_time, schedule.end_time - 1.second) || schedule.start_time.between?(start_time, end_time - 1.second) || schedule.end_time.between?(start_time, end_time - 1.second)
+      if (start_time.between?(schedule.start_time, schedule.end_time - 1.second) && date == schedule.start_date) || end_time.between?(schedule.start_time, schedule.end_time - 1.second) || schedule.start_time.between?(start_time, end_time - 1.second) || schedule.end_time.between?(start_time, end_time - 1.second)
         return true
       else
         conflict = false
