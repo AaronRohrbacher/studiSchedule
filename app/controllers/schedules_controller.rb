@@ -17,7 +17,7 @@ class SchedulesController < ApplicationController
                  params[:schedule]['end_time(5i)'].to_i)
 
     if Room.has_scheduling_conflict?(params[:schedule][:room_id], params[:schedule][:start_date], start_time, end_time)
-      flash[:alert] = "Schedule Conflict"
+      flash[:alert] = "Schedule Conflict, Try again"
     else
       recurring_date = Date.parse(params[:schedule][:start_date])
       if params[:schedule][:recurring] == 'semester'
@@ -40,6 +40,8 @@ class SchedulesController < ApplicationController
         recurring_date = recurring_date + 1.week
       end
     end
+    flash[:notice] = "Schedule added to event and room successfully."
+    redirect_to school_event_path(@school, @event)
   end
 
   def index

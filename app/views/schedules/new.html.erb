@@ -18,5 +18,5 @@
 <%= f.label :room %>
 <%= f.select :room_id, rooms, {}, class: 'form-control' %>
 
-<%= f.submit "Add to Schedule", class: 'btn btn-success' %>
+<%= f.submit "Add to #{@event.name} Schedule", class: 'btn btn-success' %>
 <% end %>
