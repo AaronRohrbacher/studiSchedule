@@ -16,10 +16,10 @@ class SchedulesController < ApplicationController
     end_time = Time.utc(2000,01,01,params[:schedule]['end_time(4i)'].to_i,
                  params[:schedule]['end_time(5i)'].to_i)
 
-    if Room.has_scheduling_conflict?(params[:schedule][:room_id], params[:schedule][:date], start_time, end_time)
+    if Room.has_scheduling_conflict?(params[:schedule][:room_id], params[:schedule][:start_date], start_time, end_time)
       flash[:alert] = "Schedule Conflict"
     else
-      recurring_date = Date.parse(params[:schedule][:date])
+      recurring_date = Date.parse(params[:schedule][:start_date])
       if params[:schedule][:recurring] == 'semester'
         end_recurring_date = end_of_semester
       elsif params[:schedule][:recurring] == 'once'
@@ -33,7 +33,7 @@ class SchedulesController < ApplicationController
           school_id: @school.id,
           event_id: @event.id,
           room_id: params[:schedule][:room_id],
-          date: recurring_date,
+          start_date: recurring_date,
           start_time: start_time,
           end_time: end_time,
           )

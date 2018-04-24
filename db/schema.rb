@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 20180214021401) do
     t.string "recurring"
     t.time "start_time"
     t.time "end_time"
-    t.date "date"
+    t.date "start_date"
   end
 
   create_table "schools", force: :cascade do |t|

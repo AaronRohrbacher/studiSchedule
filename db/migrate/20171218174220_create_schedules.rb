@@ -8,7 +8,7 @@ class CreateSchedules < ActiveRecord::Migration[5.1]
       t.string :recurring
       t.time :start_time
       t.time :end_time
-      t.date :date
+      t.date :start_date
     end
   end
 end

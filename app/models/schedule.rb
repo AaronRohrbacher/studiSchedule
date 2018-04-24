@@ -21,7 +21,7 @@ class Schedule < ApplicationRecord
       until time == school_closed do
         html << "<td>#{time}</td>"
         school.rooms.all.each do |room|
-          schedule = room.schedules.where(start_time: time, date: date)[0]
+          schedule = room.schedules.where(start_time: time, start_date: date)[0]
           if schedule
             check_time = time
             row_span = 0
