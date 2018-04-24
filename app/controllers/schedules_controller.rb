@@ -28,17 +28,17 @@ class SchedulesController < ApplicationController
         end_recurring_date = recurring_date + 1.year
       end
 
-        until recurring_date > end_recurring_date do
-          Schedule.create!(
-            school_id: @school.id,
-            event_id: @event.id,
-            room_id: params[:schedule][:room_id],
-            date: recurring_date,
-            start_time: start_time,
-            end_time: end_time,
-            date: recurring_date)
-          recurring_date = recurring_date + 1.week
-        end
+      until recurring_date > end_recurring_date do
+        Schedule.create!(
+          school_id: @school.id,
+          event_id: @event.id,
+          room_id: params[:schedule][:room_id],
+          date: recurring_date,
+          start_time: start_time,
+          end_time: end_time,
+          )
+        recurring_date = recurring_date + 1.week
+      end
     end
   end
 
