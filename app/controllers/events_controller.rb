@@ -38,6 +38,7 @@ class EventsController < ApplicationController
 
 
   def show
+    @school = School.find(params[:school_id])
     @event = Event.find(params[:id])
     @teachers = Teacher.all
   end

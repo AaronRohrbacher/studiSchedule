@@ -1,0 +1,22 @@
+<%= form_for [@school, @event, @schedule] do |f| %>
+<div class = 'form-group'>
+<%= f.label :start_date  %>
+<%= f.date_field :start_date, class: 'form-control' %>
+
+<div class = 'col-sm-6'>
+<%= f.label :start_time %>
+<%= f.time_select :start_time, {minute_step: 15} %>
+<br>
+<%= f.label :end_time %>
+<%= f.time_select :end_time, {minute_step: 15} %>
+
+</div>
+<%= f.label :recurring %>
+<%= f.select :recurring, options_for_select([['Indefinite (schedules for one year)', 'indefinite'], ['End of Semester', 'semester'], ['Only Once', 'once']]), {}, class: 'form-control' %>
+
+<% rooms = options_from_collection_for_select(@rooms, 'id', 'name') %>
+<%= f.label :room %>
+<%= f.select :room_id, rooms, {}, class: 'form-control' %>
+
+<%= f.submit "Add to #{@event.name} Schedule", class: 'btn btn-success' %>
+<% end %>
