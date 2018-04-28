@@ -17,10 +17,11 @@
 <% end %>
 
 <h3>Scheduled Times</h3>
-<% @event.schedules.each do |schedule| %>
+<% @event.schedules.order(:start_date).each do |schedule| %>
   <p><%= schedule.start_date %></p>
   <p><%= schedule.start_time %></p>
   <%= link_to 'edit', edit_school_event_schedule_path(@school, @event, schedule) %>
+  <%= link_to 'delete', school_event_schedule_path(@school, @event, schedule),  method: :delete, data: { confirm: 'This will delete this schedule permanently. Click Ok to confirm, or cancel.' } %>
 <% end %>
 
 <h3>Enrolled Students</h3>

@@ -79,6 +79,7 @@ class SchedulesController < ApplicationController
       original_end_time = schedule.end_time
 
       until recurring_date > end_recurring_date do
+        binding.pry
         schedule.update(
           school_id: @school.id,
           event_id: @event.id,
@@ -101,7 +102,15 @@ class SchedulesController < ApplicationController
       flash[:notice] = "Schedule added to event and room successfully."
       redirect_to school_event_path(@school, @event)
     end
+  end
 
+  def destroy
+    @school = School.find(params[:school_id])
+    @event = Event.find(params[:event_id])
+    @schedule = Schedule.find(params[:id])
+    @schedule.destroy
+    flash[:notice] = "Schedule deleted permanently."
+    redirect_to school_event_path(@school, @event)
   end
 
   def index
