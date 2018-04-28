@@ -28,3 +28,5 @@
 <% @event.students.each do |student| %>
   <p><%= student.first_name %></p>
 <% end %>
+
+<%= link_to 'Delete Class Permanently', school_event_path(@school, @event), method: :delete, class: 'btn btn-danger', data: { confirm: 'THIS WILL PERMANENTELY DELETE THIS CLASS AND ALL OF ITS SCHEDULES. Are you sure?'} %>

@@ -43,6 +43,12 @@ class EventsController < ApplicationController
     @teachers = Teacher.all
   end
 
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy!
+  end
+
+
   private
 
   def fetch_school
@@ -55,4 +61,5 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:school_id, :name, :description, :event_type, :teacher_id)
   end
+
 end
