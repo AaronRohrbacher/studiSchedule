@@ -23,17 +23,17 @@ class EventsController < ApplicationController
     redirect_to school_event_path(@school, @event)
   end
 
-  # def edit
-  #   @school = School.find(params[:school_id])
-  #   @event = Event.find(params[:id])
-  #   @teachers = Teacher.all
-  #   @students = Student.all
-  # end
+  def edit
+    @school = School.find(params[:school_id])
+    @event = Event.find(params[:id])
+  end
 
   def update
     @school = School.find(params[:school_id])
     @event = Event.find(params[:id])
-    @event.update!(event_params)
+    @event.update(event_params)
+    flash[:notice] = "Event updated successfully"
+    redirect_to school_event_path(@school, @event)
   end
 
 

@@ -1,7 +1,1 @@
-<%= form_for [@school, @event] do |f| %>
-
-<% options = options_from_collection_for_select(@teachers, 'id', 'first_name') %>
-<%= f.select :teacher_id, options %>
-
-<%= f.submit "submit" %>
-<% end %>
+<%= render 'form' %>
