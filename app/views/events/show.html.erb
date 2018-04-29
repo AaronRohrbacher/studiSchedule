@@ -7,6 +7,7 @@
   <%= link_to 'Add students', new_school_event_event_student_path(@school, @event) %> |
 
 </p>
+<%= link_to 'Edit Event Details', edit_school_event_path(@school, @event) %>
 <% end %>
 
 <%= link_to 'StudiBoard', school_event_board_path(@school, @event) %>

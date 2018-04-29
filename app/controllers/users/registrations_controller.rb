@@ -15,7 +15,7 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     super do |r|
       @school = School.find(r.school_id)
-      @account = Account.create!(user_id: r.id, school_id: r.school_id, registration_complete: false)
+      @account = Student.create!(user_id: r.id, school_id: r.school_id, registration_complete: false)
     end
   end
 
@@ -57,7 +57,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    edit_school_account_path(@school, @account)
+    edit_school_student_path(@school, @account)
   end
 
   # The path used after sign up for inactive accounts.
