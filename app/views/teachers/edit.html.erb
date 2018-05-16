@@ -1,0 +1,50 @@
+<%= form_for [@school, @account] do |f| %>
+<%= f.label :first_name %>
+<%= f.text_field :first_name %>
+
+<%= f.label :last_name %>
+<%= f.text_field :last_name %>
+
+<%= f.label :parent_name %>
+<%= f.text_field :parent_name %>
+
+<%= f.label :parent2_name %>
+<%= f.text_field :parent2_name %>
+
+<%= f.label :address %>
+<%= f.text_field :address %>
+
+<%= f.label :address2 %>
+<%= f.text_field :address2 %>
+
+<%= f.label :city %>
+<%= f.text_field :city %>
+
+<%= f.label :state %>
+<%= f.text_field :state %>
+
+<%= f.label :zip %>
+<%= f.text_field :zip %>
+
+<%= f.label :phone %>
+<%= f.text_field :phone %>
+
+<%= f.label :phone2 %>
+<%= f.text_field :phone2 %>
+
+<%= f.label :email2 %>
+<%= f.text_field :email2 %>
+
+<%= f.label :student_email %>
+<%= f.text_field :student_email %>
+
+<%= f.label :student_phone %>
+<%= f.text_field :student_phone %>
+
+<% if @account.registration_complete === false %>
+<%= f.label :is_teacher %>
+<%= f.select :type, [['Student', Student],['Teacher', Teacher]] %>
+<% end %>
+
+<%= f.submit "submit" %>
+<% end %>

@@ -15,7 +15,11 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     super do |r|
       @school = School.find(r.school_id)
-      @account = Student.create!(user_id: r.id, school_id: r.school_id, registration_complete: false)
+      if params['user']['account_type'] == 'Student'
+        @account = Student.create!(user_id: r.id, school_id: r.school_id, registration_complete: false)
+      elsif params['user']['account_type'] == 'Teacher'
+        @account = Teacher.create!(user_id: r.id, school_id: r.school_id, registration_complete: false)
+      end
     end
   end
 
@@ -47,7 +51,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:school_id])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:school_id, :account_type])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -57,7 +61,11 @@ class RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    edit_school_student_path(@school, @account)
+    if @account.type == 'Student'
+      edit_school_student_path(@school, @account)
+    elsif @account.type == 'Teacher'
+      edit_school_teacher_path(@school, @account)
+    end
   end
 
   # The path used after sign up for inactive accounts.

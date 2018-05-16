@@ -1,2 +1,7 @@
 <h1><%= @school.name %></h1>
 <%= image_tag "logos/#{@school.id}/logo.png", width: 300 %>
+<% if current_user.account.type == 'Student' %>
+  <% current_user.account.events.each do |event| %>
+    <p><%= event.name %></p>
+  <% end %>
+<% end %>

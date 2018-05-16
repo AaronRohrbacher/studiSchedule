@@ -79,7 +79,6 @@ class SchedulesController < ApplicationController
       original_end_time = schedule.end_time
 
       until recurring_date > end_recurring_date do
-        binding.pry
         schedule.update(
           school_id: @school.id,
           event_id: @event.id,

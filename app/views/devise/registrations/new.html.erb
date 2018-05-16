@@ -21,6 +21,9 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <%= f.label :account_type %>
+  <%= f.select :account_type, [['Student', Student],['Teacher', Teacher]] %>
+
     <%= f.hidden_field :school_id, :value => params[:school_id] %>
 
   <div class="actions">
