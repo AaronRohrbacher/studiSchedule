@@ -112,10 +112,4 @@ class SchedulesController < ApplicationController
     redirect_to school_event_path(@school, @event)
   end
 
-  def index
-    @school = School.find(params[:school_id])
-    @rooms = Room.all
-    @events = Event.all
-    @schedules = Schedule.all
-  end
 end

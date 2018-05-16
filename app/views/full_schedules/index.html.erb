@@ -1,0 +1,6 @@
+<%= form_tag(school_full_schedules_path, method: :get) do %>
+  <%= date_field :start_date, params[:start_date] %>
+  <%= submit_tag "View Week", name: nil %>
+<% end %>
+
+<%= @html.html_safe %>

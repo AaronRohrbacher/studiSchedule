@@ -1,1 +1,6 @@
+<%= form_tag(full_schedules_path, method: :post) do %>
+  <%= date_field :start_date, params[:start_date] %>
+  <%= submit_tag %>
+<% end %>
+
 <%= Schedule.display_schedule(Time.utc(2018, 4, 10), @school.id).html_safe %>
