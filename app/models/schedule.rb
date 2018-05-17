@@ -3,6 +3,10 @@ class Schedule < ApplicationRecord
   belongs_to :event
   belongs_to :room
 
+  def self.order_by_time
+    order('start_time')
+  end
+
   def self.display_schedule(date, school_id)
     school = School.find(school_id)
     school_open = Time.utc(2000,01,01,8,00)
@@ -11,7 +15,7 @@ class Schedule < ApplicationRecord
     css_class = "table-info"
     last_display_date = date + 7.days
     until date == last_display_date do
-      html << date.to_s
+      html << date.strftime('%A, %B %d, %Y')
       html << '<table class="table"><thead><tr><th>Time</th>'
       school.rooms.all.each do |room|
         html << "<th>#{room.name}</th>"
@@ -19,7 +23,7 @@ class Schedule < ApplicationRecord
       html << '</tr></thead><tbody>'
       time = school_open
       until time == school_closed do
-        html << "<td>#{time}</td>"
+        html << "<td>#{time.strftime('%l:%M%P')}</td>"
         school.rooms.all.each do |room|
           schedule = room.schedules.where(start_time: time, start_date: date)[0]
           if schedule
@@ -29,7 +33,7 @@ class Schedule < ApplicationRecord
               row_span += 1
               check_time += 15.minutes
             end
-            html << "<td class = 'table-info' rowspan = '#{row_span}'>#{schedule.event.name}, #{date}</td>"
+            html << "<td class = 'table-info' rowspan = '#{row_span}'>#{schedule.event.name}, #{date.strftime('%m/%d/%Y')}<br>#{schedule.start_time.strftime('%l:%M%P')}-#{schedule.end_time.strftime('%l:%M%P')}</td>"
           else
             html << '<td></td>'
           end

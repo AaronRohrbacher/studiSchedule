@@ -10,6 +10,7 @@ class School < ApplicationRecord
   has_many :times
   has_many :rooms
   has_many :users
+  has_many :schedules
 
   has_attached_file :logo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
 end
