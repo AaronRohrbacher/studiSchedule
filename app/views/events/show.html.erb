@@ -29,10 +29,11 @@
 </div>
   <h3>Scheduled Times</h3>
   <% @event.schedules.order(:start_date).each do |schedule| %>
-    <p><%= schedule.start_date %></p>
-    <p><%= schedule.start_time %></p>
-    <%= link_to 'edit', edit_school_event_schedule_path(@school, @event, schedule) %>
-    <%= link_to 'delete', school_event_schedule_path(@school, @event, schedule),  method: :delete, data: { confirm: 'This will delete this schedule permanently. Click Ok to confirm, or cancel.' } %>
+    <p><%= schedule.start_date.strftime('%m/%d/%Y') %> <%= schedule.start_time.strftime('%l:%M%P') %></p>
+    <% if current_user.account.admin %>
+      <%= link_to 'edit', edit_school_event_schedule_path(@school, @event, schedule) %>
+      <%= link_to 'delete', school_event_schedule_path(@school, @event, schedule),  method: :delete, data: { confirm: 'This will delete this schedule permanently. Click Ok to confirm, or cancel.' } %>
+    <% end %>
   <% end %>
 
 
