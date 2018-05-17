@@ -13,7 +13,7 @@ class Schedule < ApplicationRecord
     until date == last_display_date do
       html << date.to_s
       html << '<table class="table"><thead><tr><th>Time</th>'
-      Room.all.each do |room|
+      school.rooms.all.each do |room|
         html << "<th>#{room.name}</th>"
       end
       html << '</tr></thead><tbody>'

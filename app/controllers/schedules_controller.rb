@@ -8,7 +8,7 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    end_of_semester = Time.utc(2018, 3, 30)
+    end_of_semester = Time.utc(2018, 8, 30)
     @school = School.find(params[:school_id])
     @event = @school.events.find(params[:event_id])
     start_time = Time.utc(2000,01,01,params[:schedule]['start_time(4i)'].to_i,

@@ -3,7 +3,7 @@ class EventTeachersController < ApplicationController
   def new
     @school = School.find(params[:school_id])
     @event = Event.find(params[:event_id])
-    @teachers = Teacher.all
+    @teachers = @school.teachers.all
     @teacher_event = EventTeacher.new
   end
 
@@ -11,6 +11,8 @@ class EventTeachersController < ApplicationController
     @event = Event.find(params[:event_id])
     @school = School.find(params[:school_id])
     EventTeacher.create!(school_id: @school.id, event_id: @event.id, teacher_id: params[:event_teacher][:teacher_id])
+    flash[:notice] = "Teacher added to event successfully."
+    redirect_to school_event_path(@school, @event)
   end
 
   private

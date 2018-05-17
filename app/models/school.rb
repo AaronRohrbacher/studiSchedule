@@ -1,6 +1,7 @@
 class School < ApplicationRecord
-  has_many :accounts
+  has_many :students
   has_many :teachers
+  has_many :accounts
   has_many :timereports
   has_many :attendances
   has_many :teacherEvents

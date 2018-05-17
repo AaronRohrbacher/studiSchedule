@@ -5,7 +5,8 @@ class EventsController < ApplicationController
 
   def index
     if current_user.account_admin
-      @events = Event.all
+      @school = School.find(params[:school_id])
+      @events = @school.events.all
     elsif current_user.account_type == Teacher
       @events = current_user.account.teacher.events.all
     else

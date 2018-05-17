@@ -7,27 +7,33 @@
   <%= link_to 'Add students', new_school_event_event_student_path(@school, @event) %> |
 
 </p>
-<%= link_to 'Edit Event Details', edit_school_event_path(@school, @event) %>
+<%= link_to 'Edit Event Details', edit_school_event_path(@school, @event) %> |
 <% end %>
 
 <%= link_to 'StudiBoard', school_event_board_path(@school, @event) %>
 
-<h3>Teacher(s)</h3>
-<% @event.teachers.each do |teacher| %>
-<p><%= teacher.first_name %> <%= teacher.last_name %></p>
-<% end %>
+<div class = 'row'>
+  <div class = 'col-md-6'>
+    <h3>Teacher(s)</h3>
+    <% @event.teachers.each do |teacher| %>
+    <p><%= teacher.first_name %> <%= teacher.last_name %></p>
+    <% end %>
+  </div>
 
-<h3>Scheduled Times</h3>
-<% @event.schedules.order(:start_date).each do |schedule| %>
-  <p><%= schedule.start_date %></p>
-  <p><%= schedule.start_time %></p>
-  <%= link_to 'edit', edit_school_event_schedule_path(@school, @event, schedule) %>
-  <%= link_to 'delete', school_event_schedule_path(@school, @event, schedule),  method: :delete, data: { confirm: 'This will delete this schedule permanently. Click Ok to confirm, or cancel.' } %>
-<% end %>
+  <div class = 'col-md-6'>
+    <h3>Enrolled Students</h3>
+    <% @event.students.each do |student| %>
+      <p><%= student.first_name %> <%= student.last_name %></p>
+    <% end %>
+  </div>
+</div>
+  <h3>Scheduled Times</h3>
+  <% @event.schedules.order(:start_date).each do |schedule| %>
+    <p><%= schedule.start_date %></p>
+    <p><%= schedule.start_time %></p>
+    <%= link_to 'edit', edit_school_event_schedule_path(@school, @event, schedule) %>
+    <%= link_to 'delete', school_event_schedule_path(@school, @event, schedule),  method: :delete, data: { confirm: 'This will delete this schedule permanently. Click Ok to confirm, or cancel.' } %>
+  <% end %>
 
-<h3>Enrolled Students</h3>
-<% @event.students.each do |student| %>
-  <p><%= student.first_name %></p>
-<% end %>
 
 <%= link_to 'Delete Class Permanently', school_event_path(@school, @event), method: :delete, class: 'btn btn-danger', data: { confirm: 'THIS WILL PERMANENTELY DELETE THIS CLASS AND ALL OF ITS SCHEDULES. Are you sure?'} %>
