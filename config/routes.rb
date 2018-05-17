@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+root :to => "schools#show", :school_id => '1'
 
 scope "schools/:school_id" do
   root :to => 'schools#show'
